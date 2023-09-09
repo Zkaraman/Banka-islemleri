@@ -1,0 +1,78 @@
+public class BankaIslemleri {
+    private double bakiye;
+    public BankaDemo(double bakiye){
+        this.bakiye=bakiye;
+
+    }
+    public void paracek(double miktar){
+        if (miktar >0 && miktar < bakiye ){
+            bakiye -= miktar;
+            System.out.println("kalan paranız: "+ bakiye);
+            bakiye--;
+        }
+
+        else {
+            System.out.println("gecersiz miktar");
+        }
+
+
+    }
+    public void parayatır(double miktar){
+        if (miktar>0){
+            bakiye += miktar;
+            System.out.println("paranız yatırıldı : " + bakiye);
+            bakiye ++;
+        }
+
+    }
+}
+
+import java.util.Scanner;
+
+public class Main {
+        public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Kullanıcı adınızı giriniz.  ");
+        String hesapName= scanner.next();
+        System.out.println("hesap numarası giriniz. ");
+        String hesapNumber=scanner.next();
+        System.out.println("bakiye giriniz");
+        double bakiye= scanner.nextDouble();
+
+        BankaDemo bankaDemo = new BankaDemo(bakiye);
+        while (true){
+
+            System.out.println("yapmak istediğiniz işlemi seçiniz.");
+            System.out.println("1.secim para çekme");
+            System.out.println("2.secim para yatırma");
+            System.out.println("3.secim bilgileri goster");
+
+
+            int secim = scanner.nextInt();
+
+            if (secim==1){
+
+                System.out.println("miktar giriniz");
+                double miktar = scanner.nextDouble();
+                bankaDemo.paracek(miktar);
+                break;
+            } else if (secim ==2) {
+                System.out.println("miktar giriniz");
+                double miktar= scanner.nextDouble();
+                bankaDemo.parayatır(miktar);
+                break;
+
+            } else if (secim==3) {
+
+                System.out.print (hesapNumber +" numaralı " + hesapName + " adında hesabınızda "+ "bakiye: "+ bakiye + " bulunmaktadır ");
+                break;
+
+            }
+
+        }
+    }
+}
+
+
+
